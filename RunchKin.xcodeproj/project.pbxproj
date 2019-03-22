@@ -13,12 +13,12 @@
 		112AC3C522433E7F00109A4C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112AC3C422433E7F00109A4C /* Player.swift */; };
 		112AC3C72243404000109A4C /* Ping IslandLightiningStrikeRescueOp.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 112AC3C62243404000109A4C /* Ping IslandLightiningStrikeRescueOp.mp3 */; };
 		112AC3C92243447C00109A4C /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112AC3C82243447B00109A4C /* Recorder.swift */; };
+		112AC3CB2243F38900109A4C /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112AC3CA2243F38900109A4C /* MainTableViewCell.swift */; };
 		114A77E322414646006843C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114A77E222414646006843C4 /* AppDelegate.swift */; };
 		114A77E822414646006843C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 114A77E622414646006843C4 /* Main.storyboard */; };
 		114A77EA22414648006843C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 114A77E922414648006843C4 /* Assets.xcassets */; };
 		114A77ED22414648006843C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 114A77EB22414648006843C4 /* LaunchScreen.storyboard */; };
 		114A77FC22414880006843C4 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114A77FB22414880006843C4 /* CoreDataStack.swift */; };
-		114A77FF22414A96006843C4 /* RunchKin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 114A77FD22414A96006843C4 /* RunchKin.xcdatamodeld */; };
 		114A780122414CF8006843C4 /* RunDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114A780022414CF8006843C4 /* RunDetailsViewController.swift */; };
 		114A780322414DA4006843C4 /* NewRunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114A780222414DA4006843C4 /* NewRunViewController.swift */; };
 		114A780522414EA8006843C4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114A780422414EA8006843C4 /* MainViewController.swift */; };
@@ -29,6 +29,7 @@
 		114A781122417D3E006843C4 /* PentagonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114A781022417D3D006843C4 /* PentagonView.swift */; };
 		114A781322418248006843C4 /* NewRunVCExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114A781222418248006843C4 /* NewRunVCExtensions.swift */; };
 		114A78152241D414006843C4 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114A78142241D414006843C4 /* Colors.swift */; };
+		11A0986422454B05006F8B9D /* RunchKin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 114A77FD22414A96006843C4 /* RunchKin.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,8 @@
 		112AC3C422433E7F00109A4C /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		112AC3C62243404000109A4C /* Ping IslandLightiningStrikeRescueOp.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Ping IslandLightiningStrikeRescueOp.mp3"; sourceTree = "<group>"; };
 		112AC3C82243447B00109A4C /* Recorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
+		112AC3CA2243F38900109A4C /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		112AC3CC2244250B00109A4C /* RunchKin 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "RunchKin 2.xcdatamodel"; sourceTree = "<group>"; };
 		114A77DF22414646006843C4 /* RunchKin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunchKin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		114A77E222414646006843C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		114A77E722414646006843C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -56,6 +59,9 @@
 		114A781022417D3D006843C4 /* PentagonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PentagonView.swift; sourceTree = "<group>"; };
 		114A781222418248006843C4 /* NewRunVCExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRunVCExtensions.swift; sourceTree = "<group>"; };
 		114A78142241D414006843C4 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		11A0986022448AF7006F8B9D /* RunchKin 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "RunchKin 3.xcdatamodel"; sourceTree = "<group>"; };
+		11A09861224490A2006F8B9D /* RunchKin 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "RunchKin 4.xcdatamodel"; sourceTree = "<group>"; };
+		11A0986522454C8B006F8B9D /* RunchKin 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "RunchKin 5.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +147,7 @@
 				114A780022414CF8006843C4 /* RunDetailsViewController.swift */,
 				114A780222414DA4006843C4 /* NewRunViewController.swift */,
 				114A780422414EA8006843C4 /* MainViewController.swift */,
+				112AC3CA2243F38900109A4C /* MainTableViewCell.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -148,6 +155,7 @@
 		114A77F922414827006843C4 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				11A098662245562B006F8B9D /* DataModels */,
 				114A77FB22414880006843C4 /* CoreDataStack.swift */,
 				114A77FD22414A96006843C4 /* RunchKin.xcdatamodeld */,
 			);
@@ -177,6 +185,13 @@
 				114A780E22417A54006843C4 /* LocationManager.swift */,
 			);
 			path = Location;
+			sourceTree = "<group>";
+		};
+		11A098662245562B006F8B9D /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,8 +280,9 @@
 				112AC3BD2242F31D00109A4C /* Swift+Gif.swift in Sources */,
 				114A780A2241777D006843C4 /* UnitExtension.swift in Sources */,
 				114A780522414EA8006843C4 /* MainViewController.swift in Sources */,
-				114A77FF22414A96006843C4 /* RunchKin.xcdatamodeld in Sources */,
 				112AC3BB2242B62700109A4C /* MultiColorPolyline.swift in Sources */,
+				11A0986422454B05006F8B9D /* RunchKin.xcdatamodeld in Sources */,
+				112AC3CB2243F38900109A4C /* MainTableViewCell.swift in Sources */,
 				114A780C224179F5006843C4 /* FormatDisplay.swift in Sources */,
 				112AC3C92243447C00109A4C /* Recorder.swift in Sources */,
 				114A78152241D414006843C4 /* Colors.swift in Sources */,
@@ -478,9 +494,13 @@
 		114A77FD22414A96006843C4 /* RunchKin.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				11A0986522454C8B006F8B9D /* RunchKin 5.xcdatamodel */,
+				11A09861224490A2006F8B9D /* RunchKin 4.xcdatamodel */,
+				11A0986022448AF7006F8B9D /* RunchKin 3.xcdatamodel */,
+				112AC3CC2244250B00109A4C /* RunchKin 2.xcdatamodel */,
 				114A77FE22414A96006843C4 /* RunchKin.xcdatamodel */,
 			);
-			currentVersion = 114A77FE22414A96006843C4 /* RunchKin.xcdatamodel */;
+			currentVersion = 11A0986522454C8B006F8B9D /* RunchKin 5.xcdatamodel */;
 			path = RunchKin.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

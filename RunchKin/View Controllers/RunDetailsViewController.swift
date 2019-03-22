@@ -10,27 +10,66 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class RunDetailsViewController: UIViewController {
+class RunDetailsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // MARK: - Properties
     var run: Run!
+    var location: Location?
+    private var originalImage: UIImage?
     
     // MARK: - Outlets
+    @IBOutlet weak var runImageView: UIImageView!
     @IBOutlet weak var blockView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var paceLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var paceInfoLabel: UILabel!
     @IBOutlet weak var timeInfoLabel: UILabel!
     
-    @IBOutlet weak var runButton: UIButton!
+    @IBOutlet weak var titleTextField: UITextField!
+    
+    @IBOutlet weak var addTitleButton: UIButton!
     @IBOutlet weak var leftButton: UIButton!
-    @IBOutlet weak var rightButton: UIButton!
     
     // MARK: - Actions
+    @IBAction func addImage(_ sender: Any) {
+        guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else {
+            print("The photo library is unavailable")
+            return
+        }
+        
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        present(picker, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func addTitle(_ sender: Any) {
+        guard let text = titleTextField.text else { return }
+        updateRun(titleInput: text)
+    }
+    
+    // MARK: UIImage Picker Controller Delegate
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        picker.dismiss(animated: true, completion: nil)
+        originalImage = info[.originalImage] as? UIImage
+        runImageView.image = originalImage
+        
+        let imageData = originalImage?.pngData()
+        run.image = imageData
+        CoreDataStack.saveContext()
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
     
     // MARK: - Methods
     override func viewDidLoad() {
@@ -39,10 +78,10 @@ class RunDetailsViewController: UIViewController {
         mapView.mapType = .hybrid
         
         blockView.backgroundColor = navy
-        //blockView.layer.addBorder(edge: .top, color: green!, thickness: 15)
         blockView.layer.addBorder(edge: .top, color: lightGray!, thickness: 10)
         blockView.layer.addBorder(edge: .top, color: salmon!, thickness: 5)
         
+        titleLabel.textColor = lightGray
         dateLabel.textColor = lightGray
         paceLabel.textColor = lightGray
         distanceLabel.textColor = lightGray
@@ -50,15 +89,26 @@ class RunDetailsViewController: UIViewController {
         paceInfoLabel.textColor = lightGray
         timeInfoLabel.textColor = lightGray
         
-        runButton.backgroundColor = green
-        runButton.layer.cornerRadius = runButton.frame.size.width / 2
-        
         let origLeftImage = UIImage(named: "add-image");
         let tintedLeftImage = origLeftImage?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
         leftButton.setImage(tintedLeftImage, for: .normal)
-        leftButton.tintColor = lightGray
+        leftButton.tintColor = green
+        
+        let origAddImage = UIImage(named: "add-30");
+        let tintedAddImage = origAddImage?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+        addTitleButton.setImage(tintedAddImage, for: .normal)
+        addTitleButton.tintColor = green
         
         configureView()
+    }
+    
+    private func updateRun(titleInput: String) {
+        let runTitle = run
+        
+        titleTextField.text = titleInput
+        runTitle?.title = titleInput
+        titleLabel.text = titleInput
+        CoreDataStack.saveContext()
     }
     
     private func configureView() {
@@ -90,6 +140,7 @@ class RunDetailsViewController: UIViewController {
             let location = location as! Location
             return location.latitude
         }
+        
         let longitudes = locations.map {location -> Double in
             let location = location as! Location
             return location.longitude
@@ -97,11 +148,13 @@ class RunDetailsViewController: UIViewController {
         
         let maxLat = latitudes.max()!
         let minLat = latitudes.min()!
-        let maxLong  = longitudes.max()!
+        let maxLong = longitudes.max()!
         let minLong = longitudes.min()!
         
+        
         let center = CLLocationCoordinate2D(latitude: (minLat + maxLat) / 2, longitude: (minLong + maxLong) / 2)
-        let span = MKCoordinateSpan(latitudeDelta: (minLat - maxLat) * 1.3, longitudeDelta: (minLong - maxLong) * 1.3)
+        NSLog("center: \(center)")
+        let span = MKCoordinateSpan(latitudeDelta: abs((minLat - maxLat) * 1.3), longitudeDelta: abs((minLong - maxLong) * 1.3))
         return MKCoordinateRegion(center: center, span: span)
     }
     
@@ -159,7 +212,10 @@ class RunDetailsViewController: UIViewController {
     
     private func loadMap() {
         
-        guard let locations = run.locations, locations.count > 0, let region = mapRegion() else {
+        guard let locations = run.locations,
+            locations.count > 0,
+            let region = mapRegion()
+        else {
             let alert = UIAlertController(title: "Error",
                                           message: "Sorry, this run has no location saved",
                                           preferredStyle: .alert)

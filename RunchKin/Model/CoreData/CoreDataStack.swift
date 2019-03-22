@@ -10,6 +10,8 @@ import Foundation
 import CoreData
 
 class CoreDataStack {
+    static let shared = CoreDataStack()
+    private init() {}
     
     static let persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "RunchKin")

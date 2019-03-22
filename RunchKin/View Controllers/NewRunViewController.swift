@@ -98,6 +98,10 @@ class NewRunViewController: UIViewController, PlayerDelegate, RecorderDelegate {
         // Appearance
         mapView.mapType = .hybrid //.hybridFlyover
         
+        paceLabel.textColor = lightGray
+        distanceLabel.textColor = lightGray
+        timeLabel.textColor = lightGray
+        
         viewBlock.backgroundColor = navy
         //viewBlock.layer.addBorder(edge: .top, color: green!, thickness: 15)
         viewBlock.layer.addBorder(edge: .top, color: lightGray!, thickness: 10)
@@ -121,7 +125,6 @@ class NewRunViewController: UIViewController, PlayerDelegate, RecorderDelegate {
         rightButton.setImage(tintedRightImage, for: .normal)
         rightButton.tintColor = lightGray
         
-        dataStackView.isHidden = true
         stopButton.isHidden = true
         
     }
@@ -139,8 +142,6 @@ class NewRunViewController: UIViewController, PlayerDelegate, RecorderDelegate {
     
     // MARK: - Run Methods
     private func startRun() {
-        //launchPromptStackView.isHidden = true
-        dataStackView.isHidden = false
         
         startButton.isHidden = true
         stopButton.isHidden = false
@@ -156,8 +157,6 @@ class NewRunViewController: UIViewController, PlayerDelegate, RecorderDelegate {
     }
 
     private func stopRun() {
-        //launchPromptStackView.isHidden = false
-        dataStackView.isHidden = true
         
         startButton.isHidden = false
         stopButton.isHidden = true
@@ -270,13 +269,19 @@ extension NewRunViewController: CLLocationManagerDelegate {
             if let lastLocation = locationList.last {
                 let delta = newLocation.distance(from: lastLocation)
                 distance = distance + Measurement(value: delta, unit: UnitLength.meters)
-                
+
                 let coordinates = [lastLocation.coordinate, newLocation.coordinate]
                 mapView.addOverlay(MKPolyline(coordinates: coordinates, count: 2))
            
-                // FIXIT: - This is a bandaid. Find out why longitude keeps coming back negative.
-                let center = CLLocationCoordinate2D(latitude: newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude) // * -1
-                let region = MKCoordinateRegion(center: center, latitudinalMeters: 300, longitudinalMeters: 300)
+                // I had to construct this center. It might need to be on Last Location or another property //
+                //let lastCenter = CLLocationCoordinate2D(latitude: lastLocation.coordinate.latitude, longitude: lastLocation.coordinate.longitude)
+                //let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+                let newCenter = CLLocationCoordinate2D(latitude: newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude)
+                let region = MKCoordinateRegion(center: newCenter, latitudinalMeters: 500, longitudinalMeters: 500)
+                //let thirdRegion = MKCoordinateRegion(center: newCenter, span: span)
+                
+                //let fourthRegion = MKCoordinateRegion(<#T##rect: MKMapRect##MKMapRect#>)
+                
                 mapView.setRegion(region, animated: true)
             }
             
