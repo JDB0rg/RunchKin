@@ -91,42 +91,10 @@ class NewRunViewController: UIViewController, PlayerDelegate, RecorderDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupTheme()
         // Delegates
         player.delegate = self
         recorder.delegate = self
-        
-        // Appearance
-        mapView.mapType = .hybrid //.hybridFlyover
-        
-        paceLabel.textColor = lightGray
-        distanceLabel.textColor = lightGray
-        timeLabel.textColor = lightGray
-        
-        viewBlock.backgroundColor = navy
-        //viewBlock.layer.addBorder(edge: .top, color: green!, thickness: 15)
-        viewBlock.layer.addBorder(edge: .top, color: lightGray!, thickness: 10)
-        viewBlock.layer.addBorder(edge: .top, color: salmon!, thickness: 5)
-        
-        startButton.backgroundColor = green
-        startButton.setTitleColor(navy, for: .normal)
-        startButton.layer.cornerRadius = startButton.frame.size.width / 2
-        
-        stopButton.setTitleColor(navy, for: .normal)
-        stopButton.backgroundColor = green
-        stopButton.layer.cornerRadius = stopButton.frame.size.width / 2
-        
-        let origLeftImage = UIImage(named: "add-image");
-        let tintedLeftImage = origLeftImage?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
-        leftButton.setImage(tintedLeftImage, for: .normal)
-        leftButton.tintColor = lightGray
-        
-        let origRightImage = UIImage(named: "musical-notes-30");
-        let tintedRightImage = origRightImage?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
-        rightButton.setImage(tintedRightImage, for: .normal)
-        rightButton.tintColor = lightGray
-        
-        stopButton.isHidden = true
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -225,6 +193,39 @@ class NewRunViewController: UIViewController, PlayerDelegate, RecorderDelegate {
         distanceLabel.text = formattedDistance
         timeLabel.text = formattedTime
         paceLabel.text = formattedPace
+    }
+    // MARK: - Theme Setup Method
+    private func setupTheme() {
+        mapView.mapType = .hybrid //.hybridFlyover
+
+        paceLabel.textColor = lightGray
+        distanceLabel.textColor = lightGray
+        timeLabel.textColor = lightGray
+
+        viewBlock.backgroundColor = navy
+        //viewBlock.layer.addBorder(edge: .top, color: green!, thickness: 15)
+        viewBlock.layer.addBorder(edge: .top, color: lightGray!, thickness: 10)
+        viewBlock.layer.addBorder(edge: .top, color: salmon!, thickness: 5)
+
+        startButton.backgroundColor = green
+        startButton.setTitleColor(navy, for: .normal)
+        startButton.layer.cornerRadius = startButton.frame.size.width / 2
+
+        stopButton.setTitleColor(navy, for: .normal)
+        stopButton.backgroundColor = green
+        stopButton.layer.cornerRadius = stopButton.frame.size.width / 2
+
+        let origLeftImage = UIImage(named: "add-image");
+        let tintedLeftImage = origLeftImage?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+        leftButton.setImage(tintedLeftImage, for: .normal)
+        leftButton.tintColor = lightGray
+
+        let origRightImage = UIImage(named: "musical-notes-30");
+        let tintedRightImage = origRightImage?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+        rightButton.setImage(tintedRightImage, for: .normal)
+        rightButton.tintColor = lightGray
+
+        stopButton.isHidden = true
     }
 }
 // MARK: - Extensions
